@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#14352b">
+  <meta name="description" content="Fairway Fables: a polished incremental idle golf prototype with a full nine-hole run and world-choice prestige.">
+  <title>Fairway Fables — First Playthrough</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icons/icon-192.png">
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">FF</span><div><p class="eyebrow">FAIRWAY FABLES</p><h1>Build a golf legend, one swing at a time.</h1></div></div>
+      <div class="resource-strip" aria-label="Resources">
+        <div><span class="currency coin"></span><small>Coins</small><strong id="coins">0</strong></div>
+        <div><span class="currency fan"></span><small>Fans</small><strong id="fans">0</strong></div>
+        <div><span class="currency legacy"></span><small>Legacy</small><strong id="legacy">0</strong></div>
+      </div>
+    </header>
+
+    <main>
+      <section class="course-panel card">
+        <div class="course-art" id="courseArt">
+          <img id="courseImage" src="assets/courses/home-course.webp" alt="The Home Course">
+          <div class="course-vignette"></div>
+          <div class="weather-chip" id="weatherChip">Calm morning • 3 mph</div>
+          <div class="golfer-stage"><div class="pip-sprite idle" id="pipSprite" aria-label="Pip Birdie"></div></div>
+          <div class="ball" id="ball"></div><div class="shot-trail" id="shotTrail"></div>
+          <div class="flag"><i></i></div>
+          <div class="floating-reward" id="floatingReward"></div>
+        </div>
+        <div class="hole-info">
+          <div><span>Hole</span><strong id="hole">1 / 9</strong></div>
+          <div><span>Par</span><strong id="par">4</strong></div>
+          <div><span>Distance</span><strong id="distance">312 yd</strong></div>
+          <div><span>Run Multiplier</span><strong id="multiplier">×1.00</strong></div>
+        </div>
+        <div class="swing-area">
+          <button class="primary-button" id="swingButton"><span class="club-icon"></span>SWING</button>
+          <div class="progress-wrap"><div class="progress-label"><span id="shotLabel">Ready at the tee</span><span id="shotPercent">0%</span></div><div class="progress-track"><div id="shotProgress"></div></div></div>
+        </div>
+      </section>
+
+      <section class="dashboard-grid">
+        <article class="card padded">
+          <div class="section-heading"><div><p class="eyebrow">BUILD THE CLUB</p><h2>Upgrades</h2></div><span id="incomeRate">0 / sec</span></div>
+          <div id="upgradeList" class="upgrade-list"></div>
+        </article>
+        <article class="card padded clubhouse-card">
+          <div class="section-heading"><div><p class="eyebrow">THIS RUN</p><h2>Clubhouse</h2></div></div>
+          <div class="clubhouse-illustration"></div>
+          <div class="stat-list"><div><span>Shots taken</span><strong id="shotsTaken">0</strong></div><div><span>Holes cleared</span><strong id="holesCleared">0</strong></div><div><span>Best streak</span><strong id="bestStreak">0</strong></div><div><span>Current world</span><strong id="currentWorld">Home Course</strong></div></div>
+          <div class="run-message" id="runMessage">Win the nine-hole Founder’s Cup to unlock your first prestige choice.</div>
+          <div class="button-row"><button class="secondary-button" id="saveButton">Save</button><button class="ghost-button" id="resetButton">Reset</button></div>
+        </article>
+      </section>
+
+      <section class="card tournament-card padded">
+        <div class="section-heading"><div><p class="eyebrow">FOUNDER'S CUP</p><h2>Tournament Journey</h2></div><span id="tournamentStatus">Hole 1</span></div>
+        <div class="tournament-track" id="tournamentTrack"></div>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="prestigeDialog"><div class="prestige-shell"><div class="prestige-heading"><p class="eyebrow">CAREER COMPLETE</p><h2>Choose your next world</h2><p>Your course resets, but your Legacy remains. Every world adds powerful buffs and meaningful nerfs.</p></div><div class="world-grid" id="worldGrid"></div></div></dialog>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="game.js"></script>
+</body></html>
